@@ -24,8 +24,14 @@ function dump_webpage() {
 
 
 #Clean the webpage by removing unwanted code
+#This will remove all "<h3>" tags: 's/<h3>//g'
+#This will remove all "</h3>" tags: 's/<\/h3>//g'
+#This will remove all "&#8211": 's/&#8211//g'
+#This will remove all spaces at the beginning of each line: s/^[ \t]*//'
+#This will remove all "<strong>": 's/<strong>//g'
+#This will remove all "</strong>": 's/<\/strong>//g'
 function strip_html() {
-    grep "<h3>.*8211" $DATA | sed -e 's/<h3>//g' -e 's/<\/h3>//g' -e 's/&#8211//g' > temp.txt && cp temp.txt $DATA && rm temp.txt
+    grep "<h3>.*8211" $DATA | sed -e 's/<h3>//g' -e 's/<\/h3>//g' -e 's/&#8211//g' -e 's/^[ \t]*//' -e 's/<strong>//g' -e 's/<\/strong>//g' > temp.txt && cp temp.txt $DATA && rm temp.txt
 
 }
 

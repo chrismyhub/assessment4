@@ -1,4 +1,4 @@
-			Department of Home Affairs ; July 2023
+Department of Home Affairs ; July 2023
 SA Liberal Party ; July 2023
 Parks Victoria ; July 2023
 Perpetual ; June 2023
@@ -42,7 +42,7 @@ Mount Lilydale Mercy College ; January 2023
 QUT ; January 2023
 PayPal ; January 2023
 Norton LifeLock ; January 2023
-			Fire Rescue Victoria ; December 2022
+Fire Rescue Victoria ; December 2022
 LastPass ; December 2022
 TPG Telecom ; December 2022
 State Office of Victoria ; December 2022
@@ -52,7 +52,7 @@ Twitter ; November 2022
 WhatsApp ; November 2022
 The Smith Family ; November 2022
 Harcourts ; November 2022
-<strong>Victorian Government | PNORS Technology Group ; November 2022</strong>
+Victorian Government | PNORS Technology Group ; November 2022
 BWX (Flora &amp; Fauna) ; November 2022
 SSKB ; October 2022
 Microsoft ; October 2022
@@ -90,7 +90,7 @@ Spirit Super ; May 2022
 APAC ; May 2022
 Facebook ; May 2022
 South Australian Government ; May 2022
-<strong>National Tertiary Education Union ; May 2022</strong>
+National Tertiary Education Union ; May 2022
 Transport for NSW ; May 2022
 SuperVPN, GeckoVPN, ChatVPN ; April 2022
 Coca-Cola ; April 2022
@@ -113,7 +113,7 @@ Red Cross Australia ; January 2022
 TfNSW (Accellion) ; January 2022
 FlexBooker ; January 2022
 Bunnings ; January 2022
-			Lastpass ; December 2021
+Lastpass ; December 2021
 Ubisoft ; December 2021
 Huawei ; December 2021
 Victoria Police ; December 2021
@@ -167,7 +167,7 @@ Service NSW ; 2020 Update
 Oxfam ; February 2021
 ASIC ; January 2021
 Tasmanian Ambulance ; January 2021
-			OAIC ; 2020
+OAIC ; 2020
 Nintendo Switch ; December 2020
 Ledger ; December 2020
 Spotify ; December 2020
@@ -257,7 +257,7 @@ P&amp;N Bank ; January 2020
 Travelex ; January 2020
 Amazon ; January 2020
 Wyze ; January 2020
-			Plenty of Fish (PoF) ; December 2019
+Plenty of Fish (PoF) ; December 2019
 Primus Realty ; December 2019
 Amazon Ring ; December 2019
 Vistaprint ; December 2019
@@ -344,7 +344,7 @@ Hawthorn Football Club ; January 2019
 Nova Entertainment ; January 2019
 My Health Records ; January 2019
 Victorian Public Servants ; January 2019
-			Commonwealth Bank ; December 2018
+Commonwealth Bank ; December 2018
 Humble Bundle ; December 2018
 News Corp ; December 2018
 Marriott&#8217;s Hotels ; December 2018
