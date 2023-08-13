@@ -30,8 +30,10 @@ function dump_webpage() {
 #This will remove all spaces at the beginning of each line: s/^[ \t]*//'
 #This will remove all "<strong>": 's/<strong>//g'
 #This will remove all "</strong>": 's/<\/strong>//g'
+#This will remove all "&amp;" and replace it with "and": 's/&amp;/and/g'
+#This will remove all "&#8217;" and replace it with "'": "s/&#8217;/'/g"
 function strip_html() {
-    grep "<h3>.*8211" $DATA | sed -e 's/<h3>//g' -e 's/<\/h3>//g' -e 's/&#8211//g' -e 's/^[ \t]*//' -e 's/<strong>//g' -e 's/<\/strong>//g' > temp.txt && cp temp.txt $DATA && rm temp.txt
+    grep "<h3>.*8211" $DATA | sed -e 's/<h3>//g' -e 's/<\/h3>//g' -e 's/&#8211//g' -e 's/^[ \t]*//' -e 's/<strong>//g' -e 's/<\/strong>//g' -e 's/&amp;/and/g' -e "s/&#8217;/'/g" > temp.txt && cp temp.txt $DATA && rm temp.txt
 
 }
 
