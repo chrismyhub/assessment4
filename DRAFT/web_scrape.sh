@@ -34,7 +34,7 @@ function dump_webpage() {
 #This will remove all "&#8217;" and replace it with "'": "s/&#8217;/'/g"
 #This will remove all "</ul>": "s/<\/ul>//g"
 #This will remove all "</div>": "s/<\/div>//g"
-
+#Using "\" after each sed command to shorten the sed command line.
 function strip_html() {
     grep -e "<h3>.*8211" -e "<li>" $DATA | sed -e 's/<h3>//g' \
     -e 's/<\/h3>//g' -e 's/&#8211//g' -e 's/^[ \t]*//' \
