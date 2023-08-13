@@ -32,8 +32,12 @@ function dump_webpage() {
 #This will remove all "</strong>": 's/<\/strong>//g'
 #This will remove all "&amp;" and replace it with "and": 's/&amp;/and/g'
 #This will remove all "&#8217;" and replace it with "'": "s/&#8217;/'/g"
+#This will remove all "</ul>": "s/<\/ul>//g"
+#This will remove all "<ul>" and append to previous line: -e :a -e '$!N;s/\n<ul>/ /;ta' -e 'P;D'
+#This will remove all "<li>" and append to previous line: -e :a -e '$!N;s/\n<li>/ /;ta' -e 'P;D'
+
 function strip_html() {
-    grep -A 3 "<h3>.*8211" $DATA | sed -e 's/<h3>//g' -e 's/<\/h3>//g' -e 's/&#8211//g' -e 's/^[ \t]*//' -e 's/<strong>//g' -e 's/<\/strong>//g' -e 's/&amp;/and/g' -e "s/&#8217;/'/g" > temp.txt && cp temp.txt $DATA && rm temp.txt
+    grep -A 3 "<h3>.*8211" $DATA | sed -e 's/<h3>//g' -e 's/<\/h3>//g' -e 's/&#8211//g' -e 's/^[ \t]*//' -e 's/<strong>//g' -e 's/<\/strong>//g' -e 's/&amp;/and/g' -e "s/&#8217;/'/g" -e "s/<\/ul>//g" -e :a -e '$!N;s/\n<ul>/ /;ta' -e 'P;D' -e :a -e '$!N;s/\n<li>/ /;ta' -e 'P;D' > temp.txt && cp temp.txt $DATA && rm temp.txt
 
 }
 
