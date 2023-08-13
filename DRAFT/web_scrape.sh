@@ -35,8 +35,15 @@ function dump_webpage() {
 #This will remove all "</ul>": "s/<\/ul>//g"
 #This will remove all "</div>": "s/<\/div>//g"
 #Using "\" after each sed command to shorten the sed command line.
+#Using grep -v -w to remove lines containing website's social media.
 function strip_html() {
-    grep -e "<h3>.*8211" -e "<li>" $DATA | sed -e 's/<h3>//g' \
+    grep -e "<h3>.*8211" -e "<li>" $DATA \
+    | grep -v -w twitter.com/webberinsurance \
+    | grep -v -w www.linkedin.com/company/webber-insurance-services \
+    | grep -v -w www.instagram.com/webberinsurance \
+    | grep -v -w plus.google.com/+WebberinsuranceAu \
+    | grep -v -w https://www.facebook.com/webberinsurance \
+    | sed -e 's/<h3>//g' \
     -e 's/<\/h3>//g' -e 's/&#8211//g' -e 's/^[ \t]*//' \
     -e 's/<strong>//g' -e 's/<\/strong>//g' -e 's/&amp;/and/g' \
     -e "s/&#8217;/'/g" -e "s/<\/ul>//g" -e "s/<ul>//g" \
