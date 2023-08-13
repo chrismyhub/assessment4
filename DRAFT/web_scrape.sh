@@ -38,6 +38,7 @@ function dump_webpage() {
 #Using grep -v -w to remove lines containing website's social media.
 #This will remove all "<li><a href=" and replace it with "; ".
 #This will remove all "" target="_blank" rel="noopener">" and replace it with " ; ".
+#This will remove all "</a></li>": "<\/a><\/li>"
 function strip_html() {
     grep -e "<h3>.*8211" -e "<li>" $DATA \
     | grep -v -w twitter.com/webberinsurance \
@@ -50,6 +51,7 @@ function strip_html() {
     -e 's/<strong>//g' -e 's/<\/strong>//g' -e 's/&amp;/and/g' \
     -e "s/&#8217;/'/g" -e "s/<\/ul>//g" -e "s/<ul>//g" \
     -e "s/<\/div>//g" -e 's/<li><a href="/; /g' -e 's/" target="_blank" rel="noopener">/ ; /g' \
+    -e 's/<\/a><\/li>//g' \
     > temp.txt && cp temp.txt $DATA && rm temp.txt
 
 }
