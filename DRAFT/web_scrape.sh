@@ -41,6 +41,8 @@ function dump_webpage() {
 #This will remove all "" target="_blank" rel="noopener">" and replace it with " ; "
     #'s/" target="_blank" rel="noopener">/ ; /g'
 #This will remove all "</a></li>": "<\/a><\/li>"
+#This will remove all "</li>": "<\/li>"
+#This will remove all "</a>": "<\/a>"
 #This will remove all "&#8216;": 's/&#8216;//g'
 #This will remove all "" target="_blank" rel="noopener noreferrer">" and replace it with " ; "
     #'s/"" target="_blank" rel="noopener noreferrer">/ ; /g'
@@ -56,7 +58,7 @@ function strip_html() {
     -e 's/<strong>//g' -e 's/<\/strong>//g' -e 's/&amp;/and/g' \
     -e "s/&#8217;/'/g" -e "s/<\/ul>//g" -e "s/<ul>//g" \
     -e "s/<\/div>//g" -e 's/" target="_blank" rel="noopener">/ ; /g' \
-    -e 's/<\/a><\/li>//g' \
+    -e 's/<\/a><\/li>//g' -e 's/<\/li>//g' -e 's/<\/a>//g'\
     -e 's/&#8216;//g' \
     -e 's/" target="_blank" rel="noopener noreferrer">/ ; /g' \
     | sed -e :a -e '$!N;s/\n<li><a href="/ ; /;ta' -e 'P;D' \
