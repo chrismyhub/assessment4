@@ -59,7 +59,7 @@ function strip_html() {
     -e "s/&#8217;/'/g" -e "s/<\/ul>//g" -e "s/<ul>//g" \
     -e "s/<\/div>//g" -e 's/" target="_blank" rel="noopener">/ ; /g' \
     -e 's/<\/a><\/li>//g' -e 's/<\/li>//g' -e 's/<\/a>//g'\
-    -e 's/&#8216;//g' \
+    -e 's/&#8216;//g' -e 's/&#8220;//g' \
     -e 's/" target="_blank" rel="noopener noreferrer">/ ; /g' \
     | sed -e :a -e '$!N;s/\n<li><a href="/ ; /;ta' -e 'P;D' \
     > temp.txt && cp temp.txt $DATA && rm temp.txt
