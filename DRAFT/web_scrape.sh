@@ -41,6 +41,9 @@ function dump_webpage() {
 #This will remove all "" target="_blank" rel="noopener">" and replace it with " ; "
     #'s/" target="_blank" rel="noopener">/ ; /g'
 #This will remove all "</a></li>": "<\/a><\/li>"
+#This will remove all "&#8216;": 's/&#8216;//g'
+#This will remove all "" target="_blank" rel="noopener noreferrer">" and replace it with " ; "
+    #'s/"" target="_blank" rel="noopener noreferrer">/ ; /g'
 function strip_html() {
     grep -e "<h3>.*8211" -e "<li>" $DATA \
     | grep -v -w twitter.com/webberinsurance \
@@ -54,6 +57,8 @@ function strip_html() {
     -e "s/&#8217;/'/g" -e "s/<\/ul>//g" -e "s/<ul>//g" \
     -e "s/<\/div>//g" -e 's/" target="_blank" rel="noopener">/ ; /g' \
     -e 's/<\/a><\/li>//g' \
+    -e 's/&#8216;//g' \
+    -e 's/" target="_blank" rel="noopener noreferrer">/ ; /g' \
     | sed -e :a -e '$!N;s/\n<li><a href="/ ; /;ta' -e 'P;D' \
     > temp.txt && cp temp.txt $DATA && rm temp.txt
 
