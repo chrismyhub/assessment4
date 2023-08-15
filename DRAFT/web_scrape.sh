@@ -36,8 +36,10 @@ function dump_webpage() {
 #This will remove all "</div>": "s/<\/div>//g"
 #Using "\" after each sed command to shorten the sed command line.
 #Using grep -v -w to remove lines containing website's social media.
-#This will remove all "<li><a href=" and replace it with "; ".
-#This will remove all "" target="_blank" rel="noopener">" and replace it with " ; ".
+#This will remove all "<li><a href=" and replace it with "; "
+    #"| sed -e :a -e '$!N;s/\n<li><a href="/ ; /;ta' -e 'P;D'"
+#This will remove all "" target="_blank" rel="noopener">" and replace it with " ; "
+    #'s/" target="_blank" rel="noopener">/ ; /g'
 #This will remove all "</a></li>": "<\/a><\/li>"
 function strip_html() {
     grep -e "<h3>.*8211" -e "<li>" $DATA \
@@ -50,8 +52,9 @@ function strip_html() {
     -e 's/<\/h3>//g' -e 's/&#8211//g' -e 's/^[ \t]*//' \
     -e 's/<strong>//g' -e 's/<\/strong>//g' -e 's/&amp;/and/g' \
     -e "s/&#8217;/'/g" -e "s/<\/ul>//g" -e "s/<ul>//g" \
-    -e "s/<\/div>//g" -e 's/<li><a href="/; /g' -e 's/" target="_blank" rel="noopener">/ ; /g' \
+    -e "s/<\/div>//g" -e 's/" target="_blank" rel="noopener">/ ; /g' \
     -e 's/<\/a><\/li>//g' \
+    | sed -e :a -e '$!N;s/\n<li><a href="/ ; /;ta' -e 'P;D' \
     > temp.txt && cp temp.txt $DATA && rm temp.txt
 
 }
