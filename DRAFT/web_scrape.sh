@@ -36,8 +36,8 @@ function dump_webpage() {
 #This will remove all "</div>": "s/<\/div>//g"
 #Using "\" after each sed command to shorten the sed command line.
 #Using grep -v -w to remove lines containing website's social media.
-#This will remove all "<li><a href=" and replace it with "; "
-    #"| sed -e :a -e '$!N;s/\n<li><a href="/ ; /;ta' -e 'P;D'"
+#This will remove all "<li><a href=" and variations of it and replace it with "; "
+    #"| sed -e :a -e '$!N;s/\n<li>,*<a href="/ ; /;ta' -e 'P;D'"
 #This will remove all "" target="_blank" rel="noopener">" and replace it with " ; "
     #'s/" target="_blank" rel="noopener">/ ; /g'
 #This will remove all "</a></li>": "<\/a><\/li>"
@@ -46,6 +46,8 @@ function dump_webpage() {
 #This will remove all "&#8216;": 's/&#8216;//g'
 #This will remove all "" target="_blank" rel="noopener noreferrer">" and replace it with " ; "
     #'s/"" target="_blank" rel="noopener noreferrer">/ ; /g'
+#This will remove all "&#8230": 's/&#8230//g' 
+
 function strip_html() {
     grep -e "<h3>.*8211" -e "<li>" $DATA \
     | grep -v -w twitter.com/webberinsurance \
@@ -54,14 +56,16 @@ function strip_html() {
     | grep -v -w plus.google.com/+WebberinsuranceAu \
     | grep -v -w https://www.facebook.com/webberinsurance \
     | sed -e 's/<h3>//g' \
-    -e 's/<\/h3>//g' -e 's/&#8211//g' -e 's/^[ \t]*//' \
+    -e 's/<\/h3>//g' -e 's/&#8211//g' -e 's/^[ \t]*//' -e 's/">/ ; /' \
     -e 's/<strong>//g' -e 's/<\/strong>//g' -e 's/&amp;/and/g' \
-    -e "s/&#8217;/'/g" -e "s/<\/ul>//g" -e "s/<ul>//g" \
+    -e "s/&#8217;/'/g" -e "s/<\/ul>//g" -e "s/<ul>//g" -e "s/<br \/>//g" \
     -e "s/<\/div>//g" -e 's/" target="_blank" rel="noopener">/ ; /g' \
     -e 's/<\/a><\/li>//g' -e 's/<\/li>//g' -e 's/<\/a>//g'\
     -e 's/&#8216;//g' -e 's/&#8220;//g' -e 's/&#8230//g' \
     -e 's/" target="_blank" rel="noopener noreferrer">/ ; /g' \
+    -e 's/" target="_blank" rel="noopener noreferrer ;/ ; /g'  \
     | sed -e :a -e '$!N;s/\n<li>.*<a href="/ ; /;ta' -e 'P;D' \
+    | sed -e 's/.*&#8221$;//g' -e 's/.*&#8221$//g' \
     > temp.txt && cp temp.txt $DATA && rm temp.txt
 
 }
