@@ -67,6 +67,8 @@ function strip_html() {
     -e 's/" target="_blank" rel="noopener ;/ ; /g'  \
     | sed -e :a -e '$!N;s/\n<li>.*<a href="/ ; /;ta' -e 'P;D' \
     | sed -e 's/.*&#8221$;//g' -e 's/.*&#8221$//g' \
+    | sed -e 's/^/ ; /' \
+    | awk '{printf("%01d %s\n", NR, $0)}' \
     > temp.txt && cp temp.txt $DATA && rm temp.txt
 
 }
