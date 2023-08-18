@@ -1,7 +1,7 @@
 #!/bin/bash
 #CREATED BY: Christopher Chong
 #DATE CREATED: 13AUG2023
-#DATE LAST MODIFIED: 15AUG2023
+#DATE LAST MODIFIED: 18AUG2023
 
 
 #ASSIGN VARIABLES
@@ -64,6 +64,7 @@ function strip_html() {
     -e 's/&#8216;//g' -e 's/&#8220;//g' -e 's/&#8230//g' \
     -e 's/" target="_blank" rel="noopener noreferrer">/ ; /g' \
     -e 's/" target="_blank" rel="noopener noreferrer ;/ ; /g'  \
+    -e 's/" target="_blank" rel="noopener ;/ ; /g'  \
     | sed -e :a -e '$!N;s/\n<li>.*<a href="/ ; /;ta' -e 'P;D' \
     | sed -e 's/.*&#8221$;//g' -e 's/.*&#8221$//g' \
     > temp.txt && cp temp.txt $DATA && rm temp.txt
