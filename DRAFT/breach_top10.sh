@@ -1,12 +1,11 @@
 #!/bin/bash
 #CREATED BY: Christopher Chong
-#DATE CREATED: 12AUG2023
+#DATE CREATED: 19AUG2023
 #DATE LAST MODIFIED: 19AUG2023
 
 #This is the beginning of the awk script.
 #It includes the File Separator.
 #Set each column heading as a variable and call on it, to be able to add buffer to the column.   
-#Filter for only "/bin/bash" usinf IF Statement. 
 
 #Filter for top 10 latest Articles
 # Use this to search for containing string:
@@ -20,8 +19,8 @@ awk 'BEGIN {
     NUM="No."; 
 
         print "_______________________________________________________________________________________________________________";
-        printf("| \033[34m%-5s\033[0m | \033[34m%-40s\033[0m | \033[34m%-40s\033[0m | \033[34m%-7s\033[0m  |\n", NUM, BUSINESS_MONTH_YEAR, LINK_TITLE, LINK);
-        printf("| \033[34m%-5s\033[0m | \033[34m%-40s\033[0m | \033[34m%-40s\033[0m | \033[34m%-7s\033[0m  |\n", "", "", "", "", "");  
+        printf("| \033[34m%-5s\033[0m | \033[34m%-40s\033[0m | \033[34m%-40s\033[0m |\n", NUM, BUSINESS_MONTH_YEAR, LINK_TITLE);
+        printf("| \033[34m%-5s\033[0m | \033[34m%-40s\033[0m | \033[34m%-40s\033[0m |\n", "", "", "");  
 } 
       
 { 

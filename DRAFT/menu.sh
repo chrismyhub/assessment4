@@ -50,7 +50,7 @@ if [ $? -eq 0 ]; then
         read -p "Please select an option between 1-6 (or type 'exit' to quit): " option
 
         #If user types exit, then quit the script immidiately...
-        if [[ $option = exit || $option = 8 ]]
+        if [[ $option = exit || $option = 6 ]]
             then 
                 #Exit code
                 exit 0
@@ -99,7 +99,7 @@ if [ $? -eq 0 ]; then
         4)
 
         #...run simCalc.sh
-        ./??????4.sh
+        ./breach_busname.sh
         echo
         read -p "Press any enter to continue..."
 
@@ -110,7 +110,7 @@ if [ $? -eq 0 ]; then
         5)
 
         #...run megafoldermaker.sh
-        ./???5.sh
+        ./breach_key.sh
         echo
         read -p "Press any enter to continue..."
 

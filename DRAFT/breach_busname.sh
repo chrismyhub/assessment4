@@ -7,7 +7,7 @@
 #It includes the File Separator.
 #Set each column heading as a variable and call on it, to be able to add buffer to the column.   
 
-#All articles
+#Filter for Business name search by user
 
 awk 'BEGIN { 
     FS="|";
@@ -15,6 +15,8 @@ awk 'BEGIN {
     LINK="Link";
     LINK_TITLE="Title";
     NUM="No."; 
+    printf "Enter Business name to search: "
+    getline name < "/dev/stdin"
 
         print "_______________________________________________________________________________________________________________";
         printf("| \033[34m%-5s\033[0m | \033[34m%-40s\033[0m | \033[34m%-40s\033[0m |\n", NUM, BUSINESS_MONTH_YEAR, LINK_TITLE);
@@ -22,8 +24,9 @@ awk 'BEGIN {
 } 
       
 { 
-
-        printf("| \033[33m%-5s\033[0m | \033[33m%-40s\033[0m | \033[35m%-40s\033[0m |\n", $1, $2, $3); 
+    
+    if ($3 ~ name)
+        printf("| \033[33m%-5s\033[0m | \033[338m%-40s\033[0m | \033[35m%-40s\033[0m |\n", $1, $2, $3); 
 } 
      
 END { 
@@ -34,7 +37,7 @@ END {
 }' output_final.txt
 
 
-#Filtered Link for User input
+#Filtered link for User input
 awk 'BEGIN { 
     FS="|";
     BUSINESS_MONTH_YEAR="Business / Month / Year";
@@ -68,5 +71,6 @@ awk 'BEGIN {
 END { 
       
     print("_______________________________________________________________________________________________________________"); 
+    
       
 }' output_final.txt
