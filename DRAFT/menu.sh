@@ -77,7 +77,9 @@ if [ $? -eq 0 ]; then
         2)
 
         #...run copyfolder.sh (absolute path)
-        ./??????2.sh
+        ./breach_all.sh
+        echo
+        read -p "Press any enter to continue..."
 
         #End of case statement 2
         ;;
@@ -86,7 +88,9 @@ if [ $? -eq 0 ]; then
         3)
 
         #...run setPassword.sh
-       ./??????3.sh
+        ./breach_year.sh
+        echo
+        read -p "Press any enter to continue..."
 
         #End of case statement 3
         ;;
@@ -96,6 +100,8 @@ if [ $? -eq 0 ]; then
 
         #...run simCalc.sh
         ./??????4.sh
+        echo
+        read -p "Press any enter to continue..."
 
         #End of case statement 4
         ;;
@@ -105,6 +111,8 @@ if [ $? -eq 0 ]; then
 
         #...run megafoldermaker.sh
         ./???5.sh
+        echo
+        read -p "Press any enter to continue..."
 
         #End of case statement 5
         ;;
