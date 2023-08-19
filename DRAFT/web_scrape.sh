@@ -1,7 +1,7 @@
 #!/bin/bash
 #CREATED BY: Christopher Chong
 #DATE CREATED: 13AUG2023
-#DATE LAST MODIFIED: 18AUG2023
+#DATE LAST MODIFIED: 19AUG2023
 
 
 #ASSIGN VARIABLES
@@ -48,6 +48,9 @@ function dump_webpage() {
     #'s/"" target="_blank" rel="noopener noreferrer">/ ; /g'
 #This will remove all "&#8230": 's/&#8230//g' 
 
+# TEMP UNUSED: | awk '{printf("%01d %s\n", NR, $0)}' \
+# TEMP UNUSED:     | sed -e 's/^/ ; /' \
+
 function strip_html() {
     grep -e "<h3>.*8211" -e "<li>" $DATA \
     | grep -v -w twitter.com/webberinsurance \
@@ -58,20 +61,26 @@ function strip_html() {
     | sed -e 's/<h3>//g' \
     -e 's/<\/h3>//g' -e 's/&#8211//g' -e 's/^[ \t]*//' -e 's/">/ ; /' \
     -e 's/<strong>//g' -e 's/<\/strong>//g' -e 's/&amp;/and/g' \
-    -e "s/&#8217;/'/g" -e "s/<\/ul>//g" -e "s/<ul>//g" -e "s/<br \/>//g" \
+    -e "s/<\/ul>//g" -e "s/<ul>//g" -e "s/<br \/>//g" \
     -e "s/<\/div>//g" -e 's/" target="_blank" rel="noopener">/ ; /g' \
     -e 's/<\/a><\/li>//g' -e 's/<\/li>//g' -e 's/<\/a>//g'\
-    -e 's/&#8216;//g' -e 's/&#8220;//g' -e 's/&#8230//g' \
     -e 's/" target="_blank" rel="noopener noreferrer">/ ; /g' \
     -e 's/" target="_blank" rel="noopener noreferrer ;/ ; /g'  \
     -e 's/" target="_blank" rel="noopener ;/ ; /g'  \
     | sed -e :a -e '$!N;s/\n<li>.*<a href="/ ; /;ta' -e 'P;D' \
-    | sed -e 's/.*&#8221$;//g' -e 's/.*&#8221$//g' -e 's/&#8221;//g' \
-    | sed -e 's/^/ ; /' \
-    | awk '{printf("%01d %s\n", NR, $0)}' \
+    | sed -e 's/&#8211;/;/g' \
+    -e 's/|//g' \
+    -e 's/&#8217;//g' \
+    -e 's/&#8216;//g' \
+    -e 's/&#8220;//g' \
+    -e 's/&#8221;//g' \
+    -e 's/&#8230;//g' \
+    -e 's/amp;//g' \
+    | sed -e 's/<[^>]*>//g' \
     > temp.txt && cp temp.txt $DATA && rm temp.txt
 
 }
+
 
 
 
