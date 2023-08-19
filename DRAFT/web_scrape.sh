@@ -59,7 +59,7 @@ function strip_html() {
     | grep -v -w plus.google.com/+WebberinsuranceAu \
     | grep -v -w https://www.facebook.com/webberinsurance \
     | sed -e 's/<h3>//g' \
-    -e 's/<\/h3>//g' -e 's/&#8211//g' -e 's/^[ \t]*//' -e 's/">/ ; /' \
+    -e 's/<\/h3>//g' -e 's/^[ \t]*//' -e 's/">/ ; /' \
     -e 's/<strong>//g' -e 's/<\/strong>//g' -e 's/&amp;/and/g' \
     -e "s/<\/ul>//g" -e "s/<ul>//g" -e "s/<br \/>//g" \
     -e "s/<\/div>//g" -e 's/" target="_blank" rel="noopener">/ ; /g' \
@@ -68,13 +68,13 @@ function strip_html() {
     -e 's/" target="_blank" rel="noopener noreferrer ;/ ; /g'  \
     -e 's/" target="_blank" rel="noopener ;/ ; /g'  \
     | sed -e :a -e '$!N;s/\n<li>.*<a href="/ ; /;ta' -e 'P;D' \
-    | sed -e 's/&#8211;/;/g' \
-    -e 's/|//g' \
+    | sed -e 's/|//g' \
     -e 's/&#8217;//g' \
     -e 's/&#8216;//g' \
     -e 's/&#8220;//g' \
     -e 's/&#8221;//g' \
     -e 's/&#8230;//g' \
+    -e 's/&#8211;//g' \
     -e 's/amp;//g' \
     | sed -e 's/<[^>]*>//g' \
     > temp.txt && cp temp.txt $DATA && rm temp.txt
