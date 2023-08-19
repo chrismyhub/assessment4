@@ -35,7 +35,7 @@ if [ $? -eq 0 ]; then
         echo "Welcome to Data Breach Articles"
         echo "###############################"
         echo
-        printf "${yellow_color}1. View latest Articles${NC}\n"
+        printf "${yellow_color}1. View Top 10 latest Articles${NC}\n"
         printf "${yellow_color}2. View all Articles${NC}\n"
         printf "${yellow_color}3. Search articles by Year${NC}\n"
         printf "${yellow_color}4. Search articles by Business name${NC}\n"
@@ -66,7 +66,7 @@ if [ $? -eq 0 ]; then
         1)
 
         #...run foldermaker.sh (absolute path)
-        ./breach.sh
+        ./breach_top10.sh
         echo
         read -p "Press any enter to continue..."
         

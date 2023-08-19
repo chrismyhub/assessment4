@@ -1,14 +1,16 @@
 #!/bin/bash
 #CREATED BY: Christopher Chong
 #DATE CREATED: 12AUG2023
-#DATE LAST MODIFIED: 15AUG2023
+#DATE LAST MODIFIED: 19AUG2023
 
 #This is the beginning of the awk script.
 #It includes the File Separator.
 #Set each column heading as a variable and call on it, to be able to add buffer to the column.   
 #Filter for only "/bin/bash" usinf IF Statement. 
 
-#Filter for latest Articles
+#Filter for top 10 latest Articles
+# Use this to search for containing string:
+    #if ($2 ~ /2023/)
 
 awk 'BEGIN { 
     FS="|";
@@ -24,7 +26,7 @@ awk 'BEGIN {
       
 { 
 
-    if ($2 ~ /2023/)
+    if ($1==1 || $1==2 || $1==3 || $1==4 || $1==5 || $1==6 || $1==7 || $1==8 || $1==9 || $1==10)
         printf("| \033[33m%-5s\033[0m | \033[33m%-40s\033[0m | \033[35m%-40s\033[0m |\n", $1, $2, $3); 
 } 
      
