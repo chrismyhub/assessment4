@@ -90,6 +90,7 @@ DATA="output_final.txt"
 #Clean output_final.txt
 function final_clean() {
     sed -e 's/\[33m//g' -e 's/\[0m//g' -e 's/\[35m//g' $DATA\
+    | awk '{printf("%01d %s\n", NR, $0)}' \
     > temp.txt && cp temp.txt $DATA && rm temp.txt
 }
 
